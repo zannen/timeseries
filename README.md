@@ -1,4 +1,4 @@
-# timeseries [![CircleCI]([circleci-img])]([circleci]) [![Coverage Status][codecov-img]][codecov]
+# timeseries [![CircleCI][circleci-img]][circleci] [![Coverage Status][codecov-img]][codecov]
 
 timeseries is a simple in-memory time series, with data being added only in
 chronological order.
