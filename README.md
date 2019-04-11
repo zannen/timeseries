@@ -1,4 +1,4 @@
-# timeseries
+# timeseries [![Build Status][ci-img]][ci] [![Coverage Status][cov-img]][cov]
 
 timeseries is a simple in-memory time series, with data being added only in
 chronological order.
