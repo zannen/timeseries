@@ -3,16 +3,23 @@
 .PHONY: bench coverage deps test
 
 deps:
-	go mod download
+	@echo "Making $@"
+	@go mod download
 
 bench:
-	go test -run=X -bench=. -benchmem ./...
+	@echo "Making $@"
+	@go test -run=X -bench=. -benchmem ./...
 
 coverage:
-	go test -coverprofile=coverage.txt -covermode=atomic ./...
+	@echo "Making $@"
+	@go test -coverprofile=coverage.txt -covermode=atomic ./...
 
 codecov_io: coverage
-	bash <(curl -s https://codecov.io/bash)
+	@echo "Making $@"
+	@curl --silent -D response_headers --output codecov.sh https://codecov.io/bash || exit 1
+	@head -n1 response_headers | grep -q "^HTTP/.* 200" || exit 2
+	@bash codecov.sh
 
 test:
-	go test ./...
+	@echo "Making $@"
+	@go test ./...
