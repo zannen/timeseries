@@ -6,6 +6,7 @@ jobs:
     working_directory: /go/src/github.com/zannen/timeseries
     steps:
       - checkout
+      - run: echo 'export GO111MODULE=on' >> $BASH_ENV
       - run: make deps
       - run: make test
       - run: make codecov_io
