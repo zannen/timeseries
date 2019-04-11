@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: golang:1.11.8-alpine3.9
+    steps:
+      - checkout
+      - run:
+          name: Code coverage
+          command: |
+            go test -coverprofile=coverage.txt -covermode=atomic
+            bash <(curl -s https://codecov.io/bash)
