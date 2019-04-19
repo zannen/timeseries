@@ -1,16 +1,20 @@
 # Makefile
 
-.PHONY: bench coverage deps test
+.PHONY: all bench codecov_io coverage default deps example test
+
+default: all
+
+all: test bench coverage example
 
 deps:
 	@echo "Making $@"
 	@go mod download
 
-bench:
+bench: deps
 	@echo "Making $@"
 	@go test -run=X -bench=. -benchmem ./...
 
-coverage:
+coverage: deps
 	@echo "Making $@"
 	@go test -coverprofile=coverage.txt -covermode=atomic ./...
 
@@ -20,6 +24,10 @@ codecov_io: coverage
 	@head -n1 response_headers | grep -q "^HTTP/.* 200" || exit 2
 	@bash codecov.sh
 
-test:
+example: deps
+	@echo "Making $@"
+	@go run ./examples/timeseries_example.go
+
+test: deps
 	@echo "Making $@"
 	@go test ./...
