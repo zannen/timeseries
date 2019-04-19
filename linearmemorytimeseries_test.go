@@ -132,7 +132,7 @@ func atestLinearMemoryTimeSeries() *timeseries.LinearMemoryTimeSeries {
 	return ts
 }
 
-func getOrPanic(ts *timeseries.LinearMemoryTimeSeries, i int) *timeseries.Datum{
+func getOrPanic(ts *timeseries.LinearMemoryTimeSeries, i int) *timeseries.Datum {
 	d, err := ts.Get(i)
 	if err != nil {
 		panic(err)

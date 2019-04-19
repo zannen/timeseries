@@ -7,8 +7,10 @@ import (
 
 // TimeSeries is an ordered sequence of data
 type TimeSeries interface {
-	Add(d *Datum)
+	Add(d *Datum) error
+	Get(i int) (*Datum, error)
 	GetRange(from, to time.Time) []*Datum
+	Len() int
 }
 
 // Datum is a single piece of recordable information

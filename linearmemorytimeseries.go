@@ -9,9 +9,10 @@ type LinearMemoryTimeSeries struct {
 	data []*Datum
 }
 
-// NewLinearMemoryTimeSeries creates a new empty LinearMemoryTimeSeries
-func NewLinearMemoryTimeSeries() *LinearMemoryTimeSeries {
-	ts := LinearMemoryTimeSeries{data: make([]*Datum, 0, 2048)}
+// NewLinearMemoryTimeSeries creates a new LinearMemoryTimeSeries, with the given data, if any
+func NewLinearMemoryTimeSeries(d ...*Datum) *LinearMemoryTimeSeries {
+	ts := LinearMemoryTimeSeries{data: make([]*Datum, len(d))}
+	copy(ts.data, d)
 	return &ts
 }
 
