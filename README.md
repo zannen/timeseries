@@ -5,26 +5,7 @@ chronological order.
 
 ## Usage
 
-```go
-package main
-
-import (
-    "time"
-
-    "github.com/zannen/timeseries"
-)
-
-func main() {
-    ts := timeseries.NewLinearMemoryTimeSeries()
-
-    d := &timeseries.Datum{
-        Timestamp: time.Now(),
-        Datum: []byte("Hello, world"),
-    }
-
-    ts.Add(d)
-}
-```
+See the `examples` directory.
 
 [circleci-img]: https://circleci.com/gh/zannen/timeseries/tree/master.svg?style=svg
 [circleci]: https://circleci.com/gh/zannen/timeseries/tree/master
